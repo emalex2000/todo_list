@@ -1,0 +1,25 @@
+{% extends 'todo_app/partials/base.html'%}
+
+{% load static %}
+{% block content %}
+    {% for message in messages %}
+        <div class="alert alert-{{messages.tag}}"></div>
+    {% endfor%}
+    <form action="" method="post">
+        {% csrf_token %}
+    <div class="grid place-items-center">
+        <div class="shadow-md w-96 grid place-items-center p-6">
+            <h1 class="font-bold">Login to View Your TodoList</h1>
+
+            <div class="flex flex-col gap-3 ">
+                <input name="email" id="email" type="email" class="w-80 h-10 border-2 focus:outline-none rounded" type="text" placeholder="email">
+                <input  name='password' id="password" type="password" class="w-80 h-10 border-2 focus:outline-none rounded" type="text" placeholder="password">
+                <button class='w-80 h-12 font-bold bg-blue-500 text-white hover:bg-blue-300 rounded-lg' type="submit">submit</button>
+                <p>Dont Have An Account <a href="{% url 'todo-auth:signup'%}">Sign-up</a></p>
+            </div>
+        </div>
+        
+    </div>
+        
+    </form>
+{% endblock %}

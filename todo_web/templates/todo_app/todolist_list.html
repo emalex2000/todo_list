@@ -1,0 +1,33 @@
+{% extends 'todo_app/partials/base.html'%}
+{% block content%}
+  <div class="grid place-items-center">
+    <div class="pb-2 border-gray-200 h-full w-96 shadow-md border border-blue-500 rounded" style="width: 50vw; min-width: 30vw;">
+        <div class="h-24 w-full shadow-md mb-4 p-2">
+            <h1 class="font-bold border-b border-grey-500">{{user.username}}</h1>
+            <p class="text-gray-400 text-xs">you have complete tasks</p>
+        </div>
+
+        {% for task in tasks%}
+        <div class="p-2">
+            <div class="w-full h-12 shadow-md rounded border-gray-200 flex items-stretch justify-between gap-1 w-4/5 border border-blue-500">
+                <a href="{%url 'todo_app:item' task.pk%}" class="p-3">{{task.title}}</a>
+                <div class="flex items-stretch ">
+                    <div class="h-full w-12 bg-blue-500 rounded cursor-pointer " >
+                        <div class="">
+                            <a href="" class="text-white font-bold grid place-items-center pt-2">DEL</a>
+                        </div>
+                    </div>
+                    <div class="h-full w-12 bg-yellow-500 rounded cursor-pointer" >
+                       
+                        <a href="" class="font-bold text-white grid place-items-center pt-2 " >EDIT</a>
+                        
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        
+      </div>
+  </div>
+{% endblock %}

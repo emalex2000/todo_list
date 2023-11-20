@@ -1,0 +1,33 @@
+{% load static%}
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+</head>
+<body class="">
+    {% if user.is_authenticated%}
+    <nav class="h-12 bg-gray-800 mb-7 p-2 flex items-stretch justify-between">
+        <a href="{% url 'todo-auth:logout'%}" class="text-gray-300">logout</a>
+        
+    </nav>
+    {% else %}
+    <nav class="h-12 bg-gray-800 mb-7 p-2 flex items-stretch justify-between">
+        <div class="gap-3">
+            <a href="{% url 'todo-auth:login'%}" class="text-gray-300">login</a>
+            <a href="{% url 'todo-auth:signup'%}" class="text-gray-300">sign-up</a>
+        </div>
+        
+    </nav>
+    <p class="shadow-md text-red-500 p-2 mb-3">you are not logged in!</p>
+
+    {% endif %}
+    {% block content%}
+
+    {% endblock %}
+</body>
+</html
